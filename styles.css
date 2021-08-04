@@ -15,7 +15,11 @@ a {
     font-weight: 700;
 }
 
+html,
 body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     color: #f8f8f8;
     font-family: 'Fira Code', monospace;
     height: 100vh;
@@ -94,43 +98,27 @@ header ul li a i:hover {
     transition: .3s ease-out;
 }
 
-.active {
-    display: block !important;
-    -webkit-animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+#about.active {
+    max-height: 300px;
+    animation: fade 1s ease-in-out;
 }
 
-@-webkit-keyframes slide-in-right {
-    0% {
-        -webkit-transform: translateX(1000px);
-        transform: translateX(1000px);
+@keyframes fade {
+    from {
         opacity: 0;
+        transform: translateY(-10px);
     }
 
-    100% {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
+    to {
         opacity: 1;
+        transform: translateY(0px);
     }
 }
-
-@keyframes slide-in-right {
-    0% {
-        -webkit-transform: translateX(1000px);
-        transform: translateX(1000px);
-        opacity: 0;
-    }
-
-    100% {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
 
 #about {
-    display: none;   
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #about p {
@@ -174,26 +162,69 @@ header ul li a i:hover {
     color: #284dc7;
     border: 2px solid #284dc7;
 }
-@media only screen and (max-width: 768px){
-    .form{
+
+footer {
+    text-align: center;
+    margin: 30px;
+}
+
+footer span>i {
+    color: red;
+}
+
+footer span>i:hover {
+    transform: ;
+    animation: beat 2s ease-out infinite;
+}
+
+@keyframes beat {
+
+    0%,
+    40%,
+    70%,
+    100% {
+        transform: scale(1);
+    }
+
+    20% {
+        transform: scale(1.4);
+    }
+
+    50%,
+    80% {
+        transform: scale(1.2);
+    }
+}
+
+footer span>a {
+    transition: 0.3s;
+}
+
+footer span>a:hover {
+    color: #284dc7;
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 768px) {
+    .form {
         width: 100%;
     }
 }
 
-@media only screen and (max-width: 480px){
-    .container .photo>img{
+@media only screen and (max-width: 480px) {
+    .container .photo>img {
         width: 150px;
     }
 
     .container .name h1 {
         font-size: 30px;
     }
-    
+
     .container .name h5 {
         font-size: 16px;
     }
 
-    #about p{
+    #about p {
         max-width: 80%;
         text-align: justify;
     }
