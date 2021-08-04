@@ -169,11 +169,10 @@ footer {
 }
 
 footer span>i {
-    color: red;
+    color: #ff0000;
 }
 
 footer span>i:hover {
-    transform: ;
     animation: beat 2s ease-out infinite;
 }
 
